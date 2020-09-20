@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'Mimir_Example' do
+  pod 'Mimir', :path => '../'
+
+  target 'Mimir_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 1.2.0'
+    pod 'Nimble', '~> 7.0'
+  end
+end
