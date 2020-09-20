@@ -1,0 +1,27 @@
+PODS:
+  - Mimir (0.1.0)
+  - Nimble (7.3.4)
+  - Quick (1.2.0)
+
+DEPENDENCIES:
+  - Mimir (from `../`)
+  - Nimble (~> 7.0)
+  - Quick (~> 1.2.0)
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
+
+EXTERNAL SOURCES:
+  Mimir:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Mimir: d6a853c0ab25acb4656da6301fa65e0aaff7c167
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+
+PODFILE CHECKSUM: f3b7ca22dbe6677e5121827f59b3b44dcb557bfe
+
+COCOAPODS: 1.8.4

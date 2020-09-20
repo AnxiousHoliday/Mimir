@@ -1,0 +1,6 @@
+framework module Mimir {
+  umbrella header "Mimir-umbrella.h"
+
+  export *
+  module * { export * }
+}

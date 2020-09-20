@@ -1,0 +1,22 @@
+{
+  "name": "Mimir",
+  "version": "0.1.0",
+  "summary": "A short description of Mimir.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Amer Eid/Mimir",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Amer Eid": "amereid92@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Amer Eid/Mimir.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Mimir/Classes/**/*"
+}

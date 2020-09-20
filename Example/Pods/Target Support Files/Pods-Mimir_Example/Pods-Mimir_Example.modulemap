@@ -1,0 +1,6 @@
+framework module Pods_Mimir_Example {
+  umbrella header "Pods-Mimir_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
