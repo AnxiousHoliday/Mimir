@@ -1,44 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4yj-aO-ut6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--ObjC Sample-->
+        <scene sceneID="pQ5-bZ-kcS">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Mimir_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WPd-D1-sIr" customClass="ObjCExampleViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="kX8-of-MCZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="lr2-7J-QAn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="jrl-ni-XnC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-zG-lfL">
-                                <rect key="frame" x="155" y="312.5" width="65" height="42"/>
-                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77G-Nb-scD">
+                                <rect key="frame" x="100.5" y="312.5" width="174" height="42"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Mimir"/>
+                                <state key="normal" title="Start ObjC Logging"/>
                                 <connections>
-                                    <action selector="mimirTestButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eSw-Uf-TPf"/>
+                                    <action selector="mimirTestButtonTapped:" destination="WPd-D1-sIr" eventType="touchUpInside" id="z8U-Pc-ixa"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1ty-zG-lfL" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="eC9-bp-VEd"/>
-                            <constraint firstItem="1ty-zG-lfL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x0V-RD-yIZ"/>
+                            <constraint firstItem="77G-Nb-scD" firstAttribute="centerY" secondItem="jrl-ni-XnC" secondAttribute="centerY" id="Vyq-K3-euC"/>
+                            <constraint firstItem="77G-Nb-scD" firstAttribute="centerX" secondItem="jrl-ni-XnC" secondAttribute="centerX" id="z6T-Wb-T0x"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="ObjC Sample" id="sA3-kt-w5k"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oj7-zR-j82" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44" y="133"/>
+            <point key="canvasLocation" x="-142" y="431"/>
+        </scene>
+        <!--Swift Example-->
+        <scene sceneID="IoO-C9-Cgn">
+            <objects>
+                <viewController id="Jou-Cy-QKd" customClass="SwiftExampleViewController" customModule="Mimir_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kYV-Zr-gXP"/>
+                        <viewControllerLayoutGuide type="bottom" id="6BW-n1-6SU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m7S-MP-eSX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMI-Ad-2IV">
+                                <rect key="frame" x="100.5" y="312.5" width="174" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Start Swift Logging"/>
+                                <connections>
+                                    <action selector="mimirTestButtonTapped:" destination="Jou-Cy-QKd" eventType="touchUpInside" id="WMO-Mw-PTJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lMI-Ad-2IV" firstAttribute="centerX" secondItem="m7S-MP-eSX" secondAttribute="centerX" id="QuJ-jX-Mh4"/>
+                            <constraint firstItem="lMI-Ad-2IV" firstAttribute="centerY" secondItem="m7S-MP-eSX" secondAttribute="centerY" id="jaz-jy-IE2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Swift Example" id="HFq-VF-XC9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqv-SR-UPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142" y="-178"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="58h-FZ-aEk">
+            <objects>
+                <tabBarController id="4yj-aO-ut6" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UJH-3y-VNB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Jou-Cy-QKd" kind="relationship" relationship="viewControllers" id="keX-i8-bmu"/>
+                        <segue destination="WPd-D1-sIr" kind="relationship" relationship="viewControllers" id="Wh8-FG-zgi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOc-uM-zJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1063" y="126"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
