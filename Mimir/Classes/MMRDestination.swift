@@ -41,7 +41,12 @@ extension MMRDestination {
         let dateString:String = dateFormatter.string(from: Date())
         let levelString:String = level.stringValue
         let lineString:String = String(line)
-        let text:String = "\(levelIcon) \(dateString) \(levelString) [File->\(file)] (Func->\(function)) [Line->\(lineString)]: \"\(msg ?? "ENTRY")\""
+        let text: String
+        if let message = msg, message.isEmpty == false {
+            text = "\(levelIcon) \(dateString) \(levelString) [File->\(file)] (Func->\(function)) [Line->\(lineString)]: \"\(message)\""
+        } else {
+            text = "\(levelIcon) \(dateString) \(levelString) [File->\(file)] (Func->\(function)) [Line->\(lineString)]"
+        }
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
