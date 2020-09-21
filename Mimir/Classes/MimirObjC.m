@@ -11,14 +11,14 @@
 
 @implementation MimirObjC
 
-+ (void) logVerboseFromFile:(NSString*_Nullable) file andFunction:(NSString*_Nullable) function andLine:(int) line andPreventTruncation:(BOOL) preventTruncation andMessage:(nullable NSString *)format, ... {
++ (void) logWithType:(int) logType andFromFile:(NSString*_Nullable) file andFunction:(NSString*_Nullable) function andLine:(int) line andPreventTruncation:(BOOL) preventTruncation andMessage:(nullable NSString *)format, ... {
     va_list args;
     va_start(args, format);
     NSString *logMsg;
     if (format) {
         logMsg = [[NSString alloc] initWithFormat:format arguments:args];
     }
-    [Mimir objcLog:logMsg file:file function:function line:line preventTruncation:preventTruncation];
+    [Mimir objcLogWithLogType:logType message:logMsg file:file function:function line:line preventTruncation:preventTruncation];
     va_end(args);
 }
 

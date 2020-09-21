@@ -17,19 +17,33 @@ public class Mimir: NSObject {
         }
     }
     
-    /// function thats logs any string passed to it and sets it to "verbose"
-    /// - Parameters:
-    ///   - message: string that is logged
-    ///   - file:  name of the file that the log was called from
-    ///   - function: name of the function that the log was called from
-    ///   - line: line number where the log was called from
-    ///   - preventTruncation: boolean that determines whether the log message will be truncated when it becomes too old or if it maintains its full length
-    public static func verbose(_ message:@escaping @autoclosure () -> Any? = nil, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
+    // trace just logs the file, function and line where it was called from without the need for a log message
+    public static func trace(file: String = #file, function: String = #function, line: Int = #line) {
+        _log(level: MimirLogLevels.trace.level, message: nil, file: file, function: function, line: line, preventTruncation: true)
+    }
+    
+    public static func verbose(_ message:@escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
         _log(level: MimirLogLevels.verbose.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
     }
     
-    @objc public static func objcLog(_ message: String? = nil, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool) {
-        _log(level: MimirLogLevels.verbose.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
+    public static func debug(_ message:@escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
+        _log(level: MimirLogLevels.debug.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
+    }
+    
+    public static func info(_ message:@escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
+        _log(level: MimirLogLevels.info.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
+    }
+    
+    public static func warning(_ message:@escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
+        _log(level: MimirLogLevels.warning.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
+    }
+    
+    public static func error(_ message:@escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
+        _log(level: MimirLogLevels.error.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
+    }
+    
+    @objc public static func objcLog(logType: Int, message: String? = nil, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool) {
+        _log(level: MimirLogLevels.getLevel(rawLevel: logType), message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
     }
     
     private class func _log(level: MimirLogLeveL, message: @escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool) {
