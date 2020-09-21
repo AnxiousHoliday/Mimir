@@ -33,7 +33,7 @@ public class MMRFileDestination: MMRDestination {
     private var fileHandleTruncated: FileHandle?
     
     private let splitter: String = "<m>"
-    private let preventTruncationEndText: String = "<full>"
+    private let preventTruncationEndText: String = "<f>"
 
     // Can be modified when setting up an instance of MMRFileDestination
     @objc var maxExtendedSize: Int = 5_000_000 // Each character is 1 byte
@@ -66,14 +66,14 @@ public class MMRFileDestination: MMRDestination {
     
     static let mimirLogsFolderURL: URL? = {
         guard let cachesDirectory:URL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
-            print("MMR: Error getting cachesDirectory")
+            print("Mimir: Error getting cachesDirectory")
             return nil
         }
         let baseURL = cachesDirectory.appendingPathComponent("Mimir")
         do {
             try FileManager.default.createDirectory(atPath: baseURL.path, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
-            print("MMR: Error creating directory: \(error.localizedDescription)")
+            print("Mimir: Error creating directory: \(error.localizedDescription)")
             return nil
         }
         return baseURL
@@ -83,7 +83,7 @@ public class MMRFileDestination: MMRDestination {
         if let mimirLogsFolderURL = MMRFileDestination.mimirLogsFolderURL {
             fileTarget = MMRFileTarget(nameOfTarget: nameOfFile, parentDirURL: mimirLogsFolderURL)
         }
-        print("MMR: URL-> \(String(describing: MMRFileDestination.mimirLogsFolderURL?.path))")
+        print("Mimir: Logs location -> \(MMRFileDestination.mimirLogsFolderURL?.absoluteString ?? "Error getting logs folder url")")
         super.init()
         dateFormatter.dateFormat = dateFormat
     }
@@ -131,13 +131,13 @@ public class MMRFileDestination: MMRDestination {
                          currentExtendedLogsSize = currentExtendedLogsSize + Int64(data.count)
                     }
                 } else {
-                    print("MMR: fileHandleExtended was nil in writeToExtendedLogsFile.")
+                    print("Mimir: fileHandleExtended was nil in writeToExtendedLogsFile.")
                     return false
                 }
             }
             return true
         } catch {
-            print("MMR: File Destination could not write to file \(extendedLogsFileURL).")
+            print("Mimir: File Destination could not write to file \(extendedLogsFileURL).")
             return false
         }
     }
@@ -266,7 +266,7 @@ public class MMRFileDestination: MMRDestination {
             let text = try String(contentsOf: extendedLogsFileURL, encoding: .utf8)
             return String(text.suffix(limitInBytes))
         } catch {
-            print("MMR: Failed to get file attributes for local path: \(extendedLogsFileURL) with error: \(error)")
+            print("Mimir: Failed to get file attributes for local path: \(extendedLogsFileURL) with error: \(error)")
             return nil
         }
     }
@@ -275,12 +275,12 @@ public class MMRFileDestination: MMRDestination {
         do {
             let fileAttributes = try fileManager.attributesOfItem(atPath: filePath)
             guard let fileSize = fileAttributes[FileAttributeKey.size] else {
-                print("MMR: Failed to get a size attribute from path: \(filePath)")
+                print("Mimir: Failed to get a size attribute from path: \(filePath)")
                 return 0
             }
             return (fileSize as! NSNumber).uint64Value
         } catch {
-            print("MMR: Failed to get file attributes for local path: \(filePath) with error: \(error)")
+            print("Mimir: Failed to get file attributes for local path: \(filePath) with error: \(error)")
             return 0
         }
     }
