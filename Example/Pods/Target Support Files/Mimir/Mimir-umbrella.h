@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "MimirObjC.h"
+#import <Mimir/MimirObjC.h>
 
 FOUNDATION_EXPORT double MimirVersionNumber;
 FOUNDATION_EXPORT const unsigned char MimirVersionString[];
