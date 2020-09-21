@@ -90,13 +90,40 @@ fileprivate extension Mimir {
 }
 
 enum MimirLogLevels {
-    case verbose, error
+    case trace, verbose, debug, info, warning, error
     var level: MimirLogLeveL {
         switch self {
+        case .trace:
+            return MimirLogLeveL(rawLevel: 0, stringValue: "TRACE", icon: "🟡")
         case .verbose:
-            return MimirLogLeveL(rawLevel: 0, stringValue: "VERBOSE", icon: "💜")
+            return MimirLogLeveL(rawLevel: 1, stringValue: "VERBOSE", icon: "🟢")
+        case .debug:
+            return MimirLogLeveL(rawLevel: 2, stringValue: "DEBUG", icon: "🔵")
+        case .info:
+            return MimirLogLeveL(rawLevel: 3, stringValue: "INFO", icon: "🟣")
+        case .warning:
+            return MimirLogLeveL(rawLevel: 4, stringValue: "WARNING", icon: "🟠")
         case .error:
-            return MimirLogLeveL(rawLevel: 1, stringValue: "ERROR", icon: "❤️")
+            return MimirLogLeveL(rawLevel: 5, stringValue: "ERROR", icon: "🔴")
+        }
+    }
+    
+    static func getLevel(rawLevel: Int) -> MimirLogLeveL {
+        switch rawLevel {
+        case 0:
+            return MimirLogLevels.trace.level
+        case 1:
+            return MimirLogLevels.verbose.level
+        case 2:
+            return MimirLogLevels.debug.level
+        case 3:
+            return MimirLogLevels.info.level
+        case 4:
+            return MimirLogLevels.warning.level
+        case 5:
+            return MimirLogLevels.error.level
+        default:
+            return MimirLogLevels.verbose.level
         }
     }
 }
