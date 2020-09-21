@@ -12,14 +12,13 @@ class MMRFileTarget {
     private let nameOfTarget: String
     let extendedLogsURL: URL
     let truncLogsURL: URL
-    private static let fileNamePrefix = "mimir-"
     private static let extendedSuffix:String = "-extended.log"
     private static let truncSuffix:String = "-trunc.log"
     
     init(nameOfTarget: String, parentDirURL: URL) {
         self.nameOfTarget = nameOfTarget
-        self.extendedLogsURL = parentDirURL.appendingPathComponent(MMRFileTarget.fileNamePrefix + nameOfTarget + MMRFileTarget.extendedSuffix, isDirectory: false)
-        self.truncLogsURL = parentDirURL.appendingPathComponent(MMRFileTarget.fileNamePrefix + nameOfTarget + MMRFileTarget.truncSuffix, isDirectory: false)
+        self.extendedLogsURL = parentDirURL.appendingPathComponent(nameOfTarget + MMRFileTarget.extendedSuffix, isDirectory: false)
+        self.truncLogsURL = parentDirURL.appendingPathComponent(nameOfTarget + MMRFileTarget.truncSuffix, isDirectory: false)
     }
 }
 
@@ -36,10 +35,11 @@ public class MMRFileDestination: MMRDestination {
     private let splitter: String = "<m>"
     private let preventTruncationEndText: String = "<full>"
 
-    private let maxExtendedSize: Int = 5_000_000 // Each character is 1 byte
-    private let maxTruncatedSize: Int = 3_000_000
-    private let maxTruncatedLogLength: Int = 1024
-    private let extraPercentageToStartDeletion: Float = 0.2
+    // Can be modified when setting up an instance of MMRFileDestination
+    @objc var maxExtendedSize: Int = 5_000_000 // Each character is 1 byte
+    @objc var maxTruncatedSize: Int = 3_000_000
+    @objc var maxTruncatedLogLength: Int = 1024
+    @objc var extraPercentageToStartDeletion: Float = 0.2
     
     private var _currentTruncatedLogsSize:Int64?
     private var currentTruncatedLogsSize:Int64 {

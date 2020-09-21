@@ -12,7 +12,7 @@ protocol MMRLoggingProtocol {
 }
 
 public class MMRDestination: NSObject, MMRLoggingProtocol {
-    var defaultHashValue: Int {return 0}
+    var defaultHashValue: Int { return 0 }
     var queue: DispatchQueue!
     let dateFormatter = DateFormatter()
     

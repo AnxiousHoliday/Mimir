@@ -9,7 +9,7 @@
 import UIKit
 
 public class Mimir: NSObject {
-    private(set) static var destinations: Set<MMRDestination> = Set<MMRDestination>()
+    private static var destinations: Set<MMRDestination> = Set<MMRDestination>()
     
     @objc public static func addDestination(_ destination: MMRDestination) {
         if destinations.contains(destination) == false {
@@ -17,6 +17,13 @@ public class Mimir: NSObject {
         }
     }
     
+    /// function thats logs any string passed to it and sets it to "verbose"
+    /// - Parameters:
+    ///   - message: string that is logged
+    ///   - file:  name of the file that the log was called from
+    ///   - function: name of the function that the log was called from
+    ///   - line: line number where the log was called from
+    ///   - preventTruncation: boolean that determines whether the log message will be truncated when it becomes too old or if it maintains its full length
     public static func verbose(_ message:@escaping @autoclosure () -> Any? = nil, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool = false) {
         _log(level: MimirLogLevels.verbose.level, message: message, file: file, function: function, line: line, preventTruncation: preventTruncation)
     }
@@ -34,22 +41,20 @@ public class Mimir: NSObject {
         }
     }
     
-    @objc static func getLogsDirectoryPath() -> String? {
+    @objc public static func getLogsDirectoryPath() -> String? {
         return MMRFileDestination.mimirLogsFolderURL?.path
     }
     
-    @objc static func getLogsPaths() -> [URL] {
+    @objc public static func getLogsPaths() -> [URL] {
         var logPaths: [URL] = []
-        for destination in destinations {
-            if let fileDestination = destination as? MMRFileDestination {
-                logPaths.append(fileDestination.fileTarget.extendedLogsURL)
-                logPaths.append(fileDestination.fileTarget.truncLogsURL)
-            }
+        for case let fileDestination as MMRFileDestination in destinations {
+            logPaths.append(fileDestination.fileTarget.extendedLogsURL)
+            logPaths.append(fileDestination.fileTarget.truncLogsURL)
         }
         return logPaths
     }
     
-    @objc static func getLogsAsString(limitInBytes: Int) -> String? {
+    @objc public static func getLogsAsString(limitInBytes: Int) -> String? {
         for destination in destinations {
             if let fileDestination = destination as? MMRFileDestination {
                 return fileDestination.getLogsAsString(limitInBytes:limitInBytes)
@@ -59,7 +64,7 @@ public class Mimir: NSObject {
     }
 }
 
-extension Mimir {
+fileprivate extension Mimir {
     /// returns the current thread name
     static func threadName() -> String {
         if Thread.isMainThread {
@@ -96,15 +101,9 @@ enum MimirLogLevels {
     }
 }
 
-class MimirLogLeveL {
+struct MimirLogLeveL {
     typealias RawLevel = Int
     let rawLevel: RawLevel
     let stringValue: String
     let icon: String
-    
-    init(rawLevel: RawLevel, stringValue: String, icon: String) {
-        self.rawLevel = rawLevel
-        self.stringValue = stringValue
-        self.icon = icon
-    }
 }
