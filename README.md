@@ -1,6 +1,6 @@
 # Mimir
 
-[![CI Status](https://img.shields.io/travis/Amer Eid/Mimir.svg?style=flat)](https://travis-ci.org/Amer Eid/Mimir)
+[![CI Status](https://img.shields.io/travis/amereid/Mimir.svg?style=flat)](https://travis-ci.org/Amer Eid/Mimir)
 [![Version](https://img.shields.io/cocoapods/v/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
 [![License](https://img.shields.io/cocoapods/l/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
 [![Platform](https://img.shields.io/cocoapods/p/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
