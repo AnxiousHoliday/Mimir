@@ -6,8 +6,20 @@
 [![Platform](https://img.shields.io/cocoapods/p/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
 
 ## Overview
-Mimir is a logging framework for both iOS and Swift that is intended for use in high usage apps that log extensively and would like to keep as much logging record as possible all while using the least amount of disk space. 
-Unlike other logging frameworks, Mimir logs to text files but tries to maintain as much logging info as possible while maintaining the logs text file under a certain file size.
+Mimir is a logging framework (Swift & Objective-C) that is intended for use in high usage apps that log extensively and would like to keep as much logging record as possible all while using the least amount of disk space. 
+
+Unlike other logging frameworks, Mimir logs to text files but tries to maintain as much logging info as possible while using the least amount of disk space.
+
+## Use Case
+
+This framework is intended for apps that:
+
+* log extremely frequently
+* log server responses that take up a lot of space in conventional logging mechanisms
+* send their logs to developers remotely
+* are very bandwidth conscious
+
+Logs are also printed to console.
 
 ## How it works
 
@@ -20,17 +32,6 @@ Mimir starts out by filling up the extended logs text file until it reaches a ce
 Once the extended logs file is full, the oldest logs are removed from the end of the extended logs file and are moved to the truncated file and then truncated accordingly. 
 
 This mechanism guarantees that the earliest log messages are logged fully while older log messages are truncated.
-
-## Use Case
-
-This framework is intended for apps that:
-
-* log extremely frequently
-* log server responses that take up a lot of space in conventional logging mechanisms
-* send their logs to developers remotely
-* are very bandwidth conscious
-
-Logs are also printed to console.
 
 ## Log Levels
 
@@ -62,7 +63,7 @@ Logging automatically adds the following for each log message:
 🔴 18:30:15.699 ERROR [File->SwiftExampleViewController.swift] (Func->mimirTestButtonTapped(_:)) [Line->34]: "This is a error log"
 ```
 
-### Usage
+# Usage - Swift
 
 ## Setup
 
@@ -127,7 +128,7 @@ let _ = Mimir.getLogsDirectoryPath()
 let _ = Mimir.getLogsAsString(limitInBytes: 500)
 ```
 
-## Example - Objective-C
+# Usage - Objective-C
 
 ## Setup
 
@@ -141,6 +142,26 @@ MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOf
 
 MMRConsoleDestination *consoleDestintion = [[MMRConsoleDestination alloc] init];
 [Mimir addDestination:consoleDestintion];
+```
+
+The fileDestination can also be customized:
+
+* maxExtendedSize -> max size of extended logs file (Default 5MB)
+* maxTruncatedSize -> max size of truncated logs file (Default 3MB)
+* maxTruncatedLogLength -> max length of log message that is moved to truncated logs file (Default 1024)
+* extraPercentageToStartDeletion -> buffer for when to delete overflowing logs (Default 0.2)
+
+Example:
+
+```ruby
+MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOfFile:@"sample"];
+
+fileDestination.maxExtendedSize = 6000000;
+fileDestination.maxTruncatedSize = 4000000;
+fileDestination.maxTruncatedLogLength = 1000;
+fileDestination.extraPercentageToStartDeletion = 0.4;
+
+[Mimir addDestination:fileDestination];
 ```
 
 ## Basic Logging
@@ -182,6 +203,12 @@ NSString* logsDirectoryPath = [Mimir getLogsDirectoryPath];
 // Gets logs as a string while limiting number of bytes
 NSString* truncatedLogsString = [Mimir getLogsAsStringWithLimitInBytes:500];
 ```
+
+## Notes
+
+This framework is still in the early phases and will keep evolving. 
+
+If you use this framework and happen to like it, feel free to let me know 😊
 
 ## Installation
 
