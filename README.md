@@ -1,4 +1,5 @@
 # Mimir
+## Logging framework for high usage iOS Apps
 
 [![CI Status](https://img.shields.io/travis/amereid/Mimir.svg?style=flat)](https://travis-ci.org/amereid/Mimir)
 [![Version](https://img.shields.io/cocoapods/v/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
