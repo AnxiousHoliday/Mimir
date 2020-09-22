@@ -36,10 +36,10 @@ public class MMRFileDestination: MMRDestination {
     private let preventTruncationEndText: String = "<f>"
 
     // Can be modified when setting up an instance of MMRFileDestination
-    @objc var maxExtendedSize: Int = 5_000_000 // Each character is 1 byte
-    @objc var maxTruncatedSize: Int = 3_000_000
-    @objc var maxTruncatedLogLength: Int = 1024
-    @objc var extraPercentageToStartDeletion: Float = 0.2
+    @objc public var maxExtendedSize: Int = 5_000_000 // Each character is 1 byte
+    @objc public var maxTruncatedSize: Int = 3_000_000
+    @objc public var maxTruncatedLogLength: Int = 1024
+    @objc public var extraPercentageToStartDeletion: Float = 0.2
     
     private var _currentTruncatedLogsSize:Int64?
     private var currentTruncatedLogsSize:Int64 {
