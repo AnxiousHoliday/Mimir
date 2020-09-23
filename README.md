@@ -1,13 +1,28 @@
-# Mimir
-## Logging framework for high usage iOS Apps
+<p align="center">
+  <img src="./Resources/mimir-logo.png" width=400 />
+</p>
 
 <!-- [![CI Status](https://img.shields.io/travis/amereid/Mimir.svg?style=flat)](https://travis-ci.org/amereid/Mimir) -->
-[![Version](https://img.shields.io/cocoapods/v/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
-[![License](https://img.shields.io/cocoapods/l/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
-[![Platform](https://img.shields.io/cocoapods/p/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir)
+
+<p align="center">
+    <a href="https://cocoapods.org/pods/Mimir">
+      <img src="https://img.shields.io/cocoapods/v/Mimir.svg?style=flat)](https://cocoapods.org/pods/Mimir"
+           alt="Pods Version" />
+    </a>
+    <a href="https://cocoapods.org/pods/Mimir">
+        <img src="https://img.shields.io/cocoapods/l/Mimir.svg?style=flat"
+             alt="License">
+    </a>
+    <a href="https://cocoapods.org/pods/Mimir">
+        <img src="https://img.shields.io/cocoapods/p/Mimir.svg?style=flat"
+             alt="Platform">
+    </a>
+</p>
+
+## Logging framework for high usage iOS Apps
 
 ## Overview
-Mimir is a logging framework (Swift & Objective-C) that is intended for use in high usage apps that log extensively and would like to keep as much logging record as possible all while using the least amount of disk space. 
+Mimir is a logging framework (Swift & Objective-C) that is intended for use in high usage apps that log extensively and would like to keep as much logging record as possible all while using the least amount of disk space.
 
 Unlike other logging frameworks, Mimir logs to text files but tries to maintain as much logging info as possible while using the least amount of disk space.
 
@@ -29,8 +44,8 @@ Mimir does this by creating 2 text files:
 * truncated text file
 * extended text file
 
-Mimir starts out by filling up the extended logs text file until it reaches a certain file size. 
-Once the extended logs file is full, the oldest logs are removed from the end of the extended logs file and are moved to the truncated file and then truncated accordingly. 
+Mimir starts out by filling up the extended logs text file until it reaches a certain file size.
+Once the extended logs file is full, the oldest logs are removed from the end of the extended logs file and are moved to the truncated file and then truncated accordingly.
 
 This mechanism guarantees that the earliest log messages are logged fully while older log messages are truncated.
 
@@ -207,7 +222,7 @@ NSString* truncatedLogsString = [Mimir getLogsAsStringWithLimitInBytes:500];
 
 ## Notes
 
-This framework is still in the early phases and will keep evolving. 
+This framework is still in the early phases and will keep evolving.
 
 If you use this framework and happen to like it, feel free to let me know 😊
 
