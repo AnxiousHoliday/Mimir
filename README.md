@@ -55,7 +55,7 @@ Logging automatically adds the following for each log message:
 * Line number
 * Log message (if not trace)
 
-```ruby
+```swift
 🟡 18:30:15.697 TRACE [File->SwiftExampleViewController.swift] (Func->mimirTestButtonTapped(_:)) [Line->29]
 🟢 18:30:15.699 VERBOSE [File->SwiftExampleViewController.swift] (Func->mimirTestButtonTapped(_:)) [Line->30]: "This is a verbose log"
 🔵 18:30:15.699 DEBUG [File->SwiftExampleViewController.swift] (Func->mimirTestButtonTapped(_:)) [Line->31]: "This is a debug log"
@@ -68,9 +68,9 @@ Logging automatically adds the following for each log message:
 
 ## Setup
 
-Setting up Mimir should happen before logging begins, preferrably at the beginning of didFinishLaunchingWithOptions in the AppDelegate.
+Setting up Mimir should happen before logging begins, preferably at the beginning of didFinishLaunchingWithOptions in the AppDelegate.
 
-```ruby
+```swift
 import Mimir // Do not forget this
 
 let fileDestination = MMRFileDestination(nameOfFile: "sample")
@@ -89,7 +89,7 @@ The fileDestination can also be customized:
 
 Example:
 
-```ruby
+```swift
 let fileDestination = MMRFileDestination(nameOfFile: "sample")
 
 fileDestination.maxExtendedSize = 6_000_000
@@ -102,7 +102,7 @@ Mimir.addDestination(fileDestination)
 
 ## Basic Logging
 
-```ruby
+```swift
 import Mimir // Do not forget this
 
 Mimir.verbose("This is a verbose log")
@@ -116,7 +116,7 @@ Mimir.error("This is a error log")
 
 Fetching logs is very easy and straightforward and there are multiple ways to fetch the logs:
 
-```ruby
+```swift
 import Mimir // Do not forget this
 
 // Gets an array of URL objects for the logs text files
@@ -133,9 +133,9 @@ let _ = Mimir.getLogsAsString(limitInBytes: 500)
 
 ## Setup
 
-Setting up Mimir should happen before logging begins, preferrably at the beginning of didFinishLaunchingWithOptions in the AppDelegate.
+Setting up Mimir should happen before logging begins, preferably at the beginning of didFinishLaunchingWithOptions in the AppDelegate.
 
-```ruby
+```swift
 #import <Mimir/Mimir-Swift.h> // Do not forget this
 
 MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOfFile:@"sample"];
@@ -154,7 +154,7 @@ The fileDestination can also be customized:
 
 Example:
 
-```ruby
+```swift
 MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOfFile:@"sample"];
 
 fileDestination.maxExtendedSize = 6000000;
@@ -169,7 +169,7 @@ fileDestination.extraPercentageToStartDeletion = 0.4;
 
 The Objective-C functions for logging are macros and are used as such:
 
-```ruby
+```swift
 #import <Mimir/MimirObjC.h>
 
 MimirTrace();
@@ -182,7 +182,7 @@ MimirError(@"This is a error log");
 
 Formatting log in objective is quite easy using the macros as well:
 
-```ruby
+```swift
 MimirVerbose(@"This is a %@'s verbose log", @"Amer's");
 
 🟢 18:42:56.702 VERBOSE [File->ObjCExampleViewController.m] (Func->mimirTestButtonTapped:) [Line->36]: "This is a Amer's's verbose log"
@@ -192,7 +192,7 @@ MimirVerbose(@"This is a %@'s verbose log", @"Amer's");
 
 Fetching logs is very easy and straightforward and there are multiple ways to fetch the logs:
 
-```ruby
+```swift
 #import <Mimir/MimirObjC.h> // Do not forget this
 
 // Gets an array of URL objects for the logs text files
@@ -216,7 +216,7 @@ If you use this framework and happen to like it, feel free to let me know 😊
 Mimir is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+```swift
 pod 'Mimir'
 ```
 
