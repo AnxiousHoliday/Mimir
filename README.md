@@ -150,7 +150,7 @@ let _ = Mimir.getLogsAsString(limitInBytes: 500)
 
 Setting up Mimir should happen before logging begins, preferably at the beginning of didFinishLaunchingWithOptions in the AppDelegate.
 
-```swift
+```objective-c
 #import <Mimir/Mimir-Swift.h> // Do not forget this
 
 MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOfFile:@"sample"];
@@ -169,7 +169,7 @@ The fileDestination can also be customized:
 
 Example:
 
-```swift
+```objective-c
 MMRFileDestination* fileDestination = [[MMRFileDestination alloc] initWithNameOfFile:@"sample"];
 
 fileDestination.maxExtendedSize = 6000000;
@@ -184,7 +184,7 @@ fileDestination.extraPercentageToStartDeletion = 0.4;
 
 The Objective-C functions for logging are macros and are used as such:
 
-```swift
+```objective-c
 #import <Mimir/MimirObjC.h>
 
 MimirTrace();
@@ -197,7 +197,7 @@ MimirError(@"This is a error log");
 
 Formatting log in objective is quite easy using the macros as well:
 
-```swift
+```objective-c
 MimirVerbose(@"This is a %@'s verbose log", @"Amer's");
 
 🟢 18:42:56.702 VERBOSE [File->ObjCExampleViewController.m] (Func->mimirTestButtonTapped:) [Line->36]: "This is a Amer's's verbose log"
@@ -207,7 +207,7 @@ MimirVerbose(@"This is a %@'s verbose log", @"Amer's");
 
 Fetching logs is very easy and straightforward and there are multiple ways to fetch the logs:
 
-```swift
+```objective-c
 #import <Mimir/MimirObjC.h> // Do not forget this
 
 // Gets an array of URL objects for the logs text files
