@@ -1,16 +1,60 @@
 # references:
 # * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
+#
+#language: objective-c
+#osx_image: xcode12u
+#xcode_scheme: "Mimir-Example"
+#branches:
+#  only:
+#    - master
+#
+#cache:
+#  - cocoapods
+#
+#env:
+#   global:
+#   - LANG=en_US.UTF-8
+#
+#   - IOS_SCHEME="Mimir"
+#
+#   - IOS_SDK=iphonesimulator14.0
+#   - IOS_EXAMPLE_WORKSPACE="Example/Mimir.xcworkspace"
+#   - EXAMPLE_SCHEME="Mimir-Example"
+#
+#   # iOS Destinations
+#   - IOS_DESTINATION_14="OS=14.0,name=iPhone 11 Pro"
+#
+#jobs:
+#  include:
+#    - stage: pod lint
+#
+#    # Build example projects
+#    - &build-examples
+#      stage: build examples
+#      name: "iOS 12.2"
+#      env: DESTINATION="$IOS_DESTINATION_14" WORKSPACE="$IOS_EXAMPLE_WORKSPACE" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME"
+#      script:
+#        - set -o pipefail
+#        - xcodebuild -version -sdk
+#        - xcodebuild build -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
+#
+#stages:
+#  - pod lint
+#  - build examples
+#
 
-osx_image: xcode12u
 language: objective-c
+osx_image: xcode12u
+xcode_project: Mimir.xcodeproj # path to your xcodeproj folder
+xcode_scheme: Mimir-Example
+xcode_destination: platform=iOS Simulator,OS=14.1,name=iPhone 11 Pro
+xcode_sdk: iphonesimulator14.0
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=Example
+    - gem install cocoapods # Since Travis is not always on latest version
+    - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/Mimir.xcworkspace -scheme Mimir-Example -sdk iphonesimulator14.0  -destination 'platform:iOS Simulator, id:11B6F686-6749-47F2-A44A-E3C2F9A1DC15, OS:14.0, name:iPhone 11' ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
-
-
+#- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/Mimir.xcworkspace -scheme Mimir-Example -sdk iphonesimulator14.0 ONLY_ACTIVE_ARCH=NO | xcpretty
+- pod lib lint --verbose
