@@ -45,11 +45,12 @@
 #
 
 language: objective-c
-osx_image: xcode12u
-xcode_project: Mimir.xcodeproj # path to your xcodeproj folder
+#osx_image: xcode12u
+osx_image: xcode12
+xcode_project: Example/Mimir.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Mimir-Example
-xcode_destination: platform=iOS Simulator,OS=14.1,name=iPhone 11 Pro
-xcode_sdk: iphonesimulator14.0
+xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro
+#xcode_sdk: iphonesimulator14.0
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
