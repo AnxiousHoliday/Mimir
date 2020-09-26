@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Mimir'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'Mimir is a logging framework that is intended for high usage apps.'
   s.description      = <<-DESC
 Mimir is a logging framework that is intended for high usage apps that require constant logging while maintaining logs in a small sized file. 
