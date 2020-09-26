@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Mimir'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'Mimir is a logging framework that is intended for high usage apps.'
   s.description      = <<-DESC
 Mimir is a logging framework that is intended for high usage apps that require constant logging while maintaining logs in a small sized file. 
@@ -12,7 +12,7 @@ This is done by logging to 2 separate text files - a truncated and an extended t
   s.source           = { :git => 'https://github.com/amereid/Mimir.git', :tag => s.version.to_s }
 
   s.swift_versions = '5.0'
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'Mimir/Classes/**/*'
 end
