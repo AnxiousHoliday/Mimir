@@ -43,9 +43,9 @@ extension MMRDestination {
         let lineString:String = String(line)
         let text: String
         if let message = msg, message.isEmpty == false {
-            text = "\(levelIcon) \(dateString) \(levelString) [File->\(file)] (Func->\(function)) [Line->\(lineString)]: \"\(message)\""
+            text = "\(thread) \(levelIcon) \(dateString) \(levelString) [\(file)](\(function)-L:\(lineString)): \"\(message)\""
         } else {
-            text = "\(levelIcon) \(dateString) \(levelString) [File->\(file)] (Func->\(function)) [Line->\(lineString)]"
+            text = "\(thread) \(levelIcon) \(dateString) \(levelString) [\(file)](\(function)-L:\(lineString))"
         }
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }

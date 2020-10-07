@@ -47,10 +47,11 @@ public class Mimir: NSObject {
     }
     
     private class func _log(level: MimirLogLeveL, message: @escaping @autoclosure () -> Any?, file: String = #file, function: String = #function, line: Int = #line, preventTruncation: Bool) {
+        let threadNameString = threadName()
         for dest in destinations {
             let msgStr = message() as? String
             dest.queue.async {
-                dest.log(level: level, msg: msgStr, thread: threadName(), file: fileNameOfFile(file), function: function, line: line, preventTruncation: preventTruncation)
+                dest.log(level: level, msg: msgStr, thread: threadNameString, file: fileNameOfFile(file), function: function, line: line, preventTruncation: preventTruncation)
             }
         }
     }
